@@ -1,0 +1,26 @@
+{
+  "name": "pebble-mondo-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "request": "^2.72.0",
+    "url": "^0.11.0",
+    "ws": "^1.1.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/threesquared/pebble-mondo.git"
+  },
+  "author": "Ben Speakman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/threesquared/pebble-mondo/issues"
+  },
+  "homepage": "https://github.com/threesquared/pebble-mondo#readme"
+}
