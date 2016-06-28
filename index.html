@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <style type="text/css">
+            body, html
+            {
+                margin: 0; padding: 0; height: 100%; overflow: hidden;
+            }
+
+            #content
+            {
+                position:absolute; left: 0; right: 0; bottom: 0; top: 0px;
+            }
+        </style>
+    </head>
+    <body>
+    <div id="content"></div>
+    <script>
+        var options = decodeURIComponent(window.location.search.slice(1)).split('&').reduce(function _reduce(/*Object*/ a, /*String*/ b) {
+            b = b.split('=');
+            a[b[0]] = b[1];
+            return a;
+        }, {});
+
+        console.log(options);
+
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('src', 'https://auth.getmondo.co.uk/' + window.location.search);
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.frameBorder = 0;
+        document.getElementById('content').appendChild(iframe);
+
+        var socket = new WebSocket('wss://pebblemondo-threesquared.rhcloud.com:8443?state=' + options.state);
+
+        socket.onmessage = function(event) {
+            var scheme = options.hasOwnProperty('return_to') ? options.return_to : 'pebblejs://close#';
+            document.location.href = scheme + encodeURIComponent(JSON.stringify(event.data));
+
+            console.log(event.data);
+        };
+    </script>
+    </body>
+</html>
+
+
+
