@@ -35,7 +35,7 @@
 
         socket.onmessage = function(event) {
             var scheme = options.hasOwnProperty('return_to') ? options.return_to : 'pebblejs://close#';
-            document.location.href = scheme + encodeURIComponent(JSON.stringify(event.data));
+            document.location.href = scheme + JSON.stringify(event.data);
 
             console.log(event.data);
         };
